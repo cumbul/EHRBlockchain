@@ -1,0 +1,82 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<head>
+  <style>
+    .parallax {
+      /* The image used */
+      background-image: url("static/img/4578691.jpg");
+
+      /* Set a specific height */
+      min-height: 600px;
+      min-width: 680px;
+      margin-right: 10%;
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: 1000px;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" style="color:white;" href="/">CryptoEHR</a>
+  <a class="navbar-brand" style=" color:white; vertical-align: middle; float: right; font-size: 15px;" href="login">Login</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="patientreg">Patient Signup</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="auditreg">Audit Signup</a>
+</nav>
+<div class="row">
+  <div class="container col-md-5" style="margin-left: 10%; vertical-align:center">
+    <h3> Result</h3>
+    {% if tx_hash != 0 %}
+    {% block content2 %}
+
+    <p>Transaction Hash: {{tx_hash}} </p>
+
+    {% endblock content2 %}
+    {% endif %}
+    <hr>
+    {{ result }}
+    <p>Please note your primary key because WE DO NOT STORE primary keys. </p>
+    <hr>
+    <div class="card" style="width: 36rem;">
+      <div class="card-header">
+        Please do not share your primary key with anyone!
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">User Name: {{username}}</li>
+        <li class="list-group-item">Blockchain Address: {{address}}</li>
+        <li class="list-group-item">Primary key: {{pk}}</li>
+        {% if tx_receipt != 0 %}
+          {% block content1 %}
+            <li class="list-group-item">Contract Address: {{tx_receipt.contractAddress}} </li>
+          {% endblock content1 %}
+        {% endif %}
+      </ul>
+      {% if audit_qr %}
+      {% block content3 %}
+      <ul>
+        QR code to audit records:
+        <li class="list-group-item" style="display: inline-block;margin-right: 20px;"> <img src={{audit_qr}} alt="" title="" /> </li>
+        Patients and audits should share this with each other to audit.
+      </ul>
+      {% endblock content3 %}
+      {% endif %}
+    </div>
+    <hr>
+
+    <p>Distributed EHR System - All humans working for you.</p>
+  </div>
+  <div class="container col-md-5">
+    <div class="parallax"></div>
+  </div>
+</div>
+<footer class="bg-light text-center text-lg-start" style="position: float; bottom: 0; right:0; left:0;">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);  padding: 20px;">
+    © 2021 Copyright:
+    <a class="text-dark" href="https://github.com/cumbul">Kivilcim(Kylie) Cumbul</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+{% endblock %}

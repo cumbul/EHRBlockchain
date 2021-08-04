@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" style="color:white;" href="/">CryptoEHR</a>
+  <a class="navbar-brand" style=" color:white; vertical-align: middle; float: right; font-size: 15px;" href="login">Login</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="patientreg">Patient Signup</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="auditreg">Audit Signup</a>
+</nav>
+<div class="container">
+  <h3>Welcome to the Electronic Health System using Blockchain!</h3>
+  <img sytle="max-width: 100%; height: auto;" src="/static/img/Blockchainhealth.png" alt="Blockchain Health" width="1000">
+
+  <p>Distributed EHR System - All humans working for you.</p>
+</div>
+<footer class="bg-light text-center text-lg-start" style="position: absolute; bottom: 0; right:0; left:0;">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);  padding: 20px;">
+    © 2021 Copyright:
+    <a class="text-dark" href="https://github.com/cumbul">Kivilcim(Kylie) Cumbul</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+{% endblock %}

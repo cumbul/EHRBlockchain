@@ -1,0 +1,177 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<!--navbar-->
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" style="color:white;" href="/">CryptoEHR</a>
+    <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="/auditreg">Log Out</a>
+    <a class="navbar-brand" style=" color:white; vertical-align: middle; float: right; font-size: 15px;" href="/patient">Logged In</a>
+</nav>
+<!--navbar end-->
+
+<div class="row">
+    <!--    forms-->
+    <div class="container col-md-6" style="margin-left: 10%">
+        <h3>Patient actions</h3>
+        <ul><li class="list-group-item">Account Address: {{username}}</li>
+            <li class="list-group-item">Contract Address:  {{contract_address}} </li>
+        </ul>
+
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.start_visit, class='form-control',
+                    placeholder='MM/DD/YYYY hh:mm') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE1" name="action1">Start Visit</button>
+
+                </div>
+            </div>
+
+        </form>
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.add_doctors, class='form-control',
+                    placeholder='Doctor Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE2" name="action2">Add Doctor</button>
+
+                </div>
+            </div>
+
+        </form>
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.remove_doctors, class='form-control',
+                    placeholder='Doctor Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE3" name="action3">Remove Doctor</button>
+
+                </div>
+            </div>
+
+        </form>
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.add_audits, class='form-control',
+                    placeholder='Audit Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE4" name="action4">Add Audit</button>
+
+                </div>
+            </div>
+
+        </form>
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.remove_audits, class='form-control',
+                    placeholder='Audit Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE5" name="action5">Remove Audit</button>
+
+                </div>
+            </div>
+
+        </form>
+
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.print_record, class='form-control',
+                    placeholder='Record Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE6" name="action6">Print Medical Record</button>
+
+                </div>
+            </div>
+
+        </form>
+        <hr>
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="form-group col-md-8">
+                    {{ wtf.form_field(form.delete_record, class='form-control',
+                    placeholder='Record Id') }}
+                    <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" value="VALUE7" name="action7">Delete Medical Record</button>
+
+                </div>
+            </div>
+
+        </form>
+
+        <hr>
+        <p>Distributed EHR System - All humans working for you.</p>
+    </div>
+    <!--    forms end-->
+
+    <!--    side -->
+    <div class="container col-md-4">
+        {% if isCard == True %}
+        {% block content1 %}
+        <div class="card" style="width: 48rem; position: fixed; top: 30%;">
+            <div class="card-body">
+                <h5 class="card-title">Action: {{result}}</h5>
+                <p class="card-text"><b>Details:</b>
+                </p>
+            </div>
+            <ul class="list-group list-group-flush">
+                {% if isStart == True %}
+                <li class="list-group-item"><b>Appointment Date:</b> {{date}}</li>
+                {% endif %}
+                <li class="list-group-item"><b>Tx Hash:</b> {{tx_hash[:40]}}...</li>
+                {% if event_logs[0]['args']['record_unique_id'] %}
+                <li class="list-group-item"><b>Unique Record ID:</b>  {{event_logs[0]['args']['record_unique_id']}} </li>
+                <li class="list-group-item"> Show this to your doctor to audit this record:<br>
+                    <img src={{qr_code}} alt="" title="" />
+                </li>
+
+                {% endif %}
+                {% if event_logs[0]['args']['record_msg'] %}
+                <li class="list-group-item"><b>Record Message:</b>  {{event_logs[0]['args']['record_msg']}} </li>
+                <li class="list-group-item"><b>Record Status:</b> {{event_logs[0]['args']['record_status']}}
+                    <br>(0-Created, 1-Deleted, 2-Changed, 3-Queried, 4-Printed, 5-Copied)</li>
+
+                {% endif %}
+                {% if event_logs[0]['args']['return_msg'] %}
+                <li class="list-group-item"><b>Event Log:</b>  {{event_logs[0]['args']['return_msg']}} </li>
+                <li class="list-group-item"><b>Address:</b>  {{event_logs[0]['args']['doctor_address']}} </li>
+                <li class="list-group-item"><b>Epoch time:</b>  {{event_logs[0]['args']['record_time']}} </li>
+                {% endif %}
+            </ul>
+
+            <div class="card-body">
+                {% if record_details %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Medical Record Details:</b> </li>
+                    <li class="list-group-item">{{record_details}}</li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+        {% endblock %}
+        {% endif %}
+    </div>
+    <!--    side end -->
+</div>
+<!--footer-->
+<footer class="bg-light text-center text-lg-start" style="position: float; bottom: 0; right:0; left:0;">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);  padding: 20px;">
+        © 2021 Copyright:
+        <a class="text-dark" href="https://github.com/cumbul">Kivilcim(Kylie) Cumbul</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!--footer end -->
+{% endblock %}

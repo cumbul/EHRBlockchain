@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<head>
+  <style>
+    .parallax {
+      /* The image used */
+      background-image: url("/static/img/bc_pat.jpeg");
+
+      /* Set a specific height */
+      min-height: 900px;
+      min-width: 680px;
+      margin-right: 10%;
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: 2000px;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" style="color:white;" href="/">CryptoEHR</a>
+  <a class="navbar-brand" style=" color:white; vertical-align: middle; float: right; font-size: 15px;" href="login">Login</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="patientreg">Patient Signup</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="auditreg">Audit Signup</a>
+</nav>
+<div class="row">
+  <div class="container col-md-5" style="margin-left: 10%">
+    <h3> Create your patient account</h3>
+    <hr>
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <p>Distributed EHR System - All humans working for you.</p>
+  </div>
+  <div class="container col-md-5">
+    <div class="parallax"></div>
+  </div>
+</div>
+<footer class="bg-light text-center text-lg-start" style="position: float; bottom: 0; right:0; left:0;">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);  padding: 20px;">
+    © 2021 Copyright:
+    <a class="text-dark" href="https://github.com/cumbul">Kivilcim(Kylie) Cumbul</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+{% endblock %}

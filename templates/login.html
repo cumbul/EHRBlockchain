@@ -1,0 +1,61 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<head>
+  <style>
+    .parallax {
+      /* The image used */
+      background-image: url("/static/img/bchainlogin.jpg");
+
+      /* Set a specific height */
+      min-height: 370px;
+      min-width: 680px;
+      margin-top: 10%;
+    }
+  </style>
+</head>
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" style="color:white;" href="/">CryptoEHR</a>
+  <a class="navbar-brand" style=" color:white; vertical-align: middle; float: right; font-size: 15px;" href="login">Login</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="patientreg">Patient Signup</a>
+  <a class="navbar-brand" style="color:white; vertical-align: middle; float: right; font-size: 15px;" href="auditreg">Audit Signup</a>
+</nav>
+<div class="row">
+  <div class="container col-md-5" style="margin-left: 10%">
+    <h3>Login your account</h3>
+    <hr>
+    <form action="" method="post" class="form" role="form">
+      {{ form.csrf_token() }}
+      <div class="row">
+        <div class="form-group col-md-8">
+          {{ wtf.form_field(form.user_name, class='form-control',
+          placeholder='Starting with 0x') }}
+          {{ wtf.form_field(form.contract_address, class='form-control',
+          placeholder='Given in patient signin') }}
+          {{ wtf.form_field(form.password, class='form-control',
+          placeholder='password') }}
+
+          <button type="submit" class="btn btn-primary col-md-3" style="width: fit-content;" href="/patient">Start Visit</button>
+        </div>
+      </div>
+    </form>
+      {% if error %}
+        <p class="error" style="color:red;"> <strong>Error:</strong> {{ error }}
+      {% endif %}
+    <hr>
+    <p>Login your account - All humans working for you.</p>
+    <p><a href="patientreg">Sign in instead</a></p>
+  </div>
+  <div class="container col-md-5">
+    <div class="parallax"></div>
+  </div>
+</div>
+<footer class="bg-light text-center text-lg-start" style="position: absolute; bottom: 0; right:0; left:0;">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);  padding: 20px;">
+    © 2021 Copyright:
+    <a class="text-dark" href="https://github.com/cumbul">Kivilcim(Kylie) Cumbul</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+{% endblock %}
