@@ -48,29 +48,29 @@ This project fully implements a Blockchain EHR(Electronic Health Record) DApp We
 
 ## Source Files
 
-* main.py: All the user interface is implemented here using Flask and other than solidity files, all blockchain connections and other encryption/decryption/hashing is implemented here. This file will be deployed to the server.
-* model.py: GUI forms for login signup and all patient and user actions model classes defined here. This file will be deployed to the server.
-* abi.json: JSON file that describes the deployed solidity contracts and its functions.
-* bytecode.json: Solidity files get compiled to the EVM bytecode which gets deployed to the Ethereum blockchain.
-* build/contracts/Migrations.json: After compilation Migration.sol turns into js file
-* build/contracts/Patient.json: After compiling using truffle Migration.sol turns into js
-* contracts/Migrations.sol: Solidity file which includes implementation of Migrations contract keeping track of which migrations were done on the current network. Implemented in truffle projects automatically, I did not change the file.
-* contracts/Patient.sol: Solidity contract for creating a new patient and all of the health records of the patient as well as their authorized audit/doctor info.
-* data/3f91fb273e0c… .csv: Hashed name of “signin_data” where encrypted patient and audit signin data is stored. This file will be stored in the server or ideally a new encrypted db will be created for this purpose.
-* data/enc_key.key: Fernet encryption key is stored here. This file should be hidden securely in server.
-* data/f415ea3131a... . csv: Hashed name of “uniqueid_data” where encrypted unique medical record id and patient id is stored. This file will be stored in the server or ideally a new encrypted db will be created for this purpose.
-* migrations/1_initial_migration.js: First task to do after compiling both Migrations.sol and Patient.sol. It migrates the and keeps track of migrations to the Ethereum blockchain. Implemented in the truffle project automatically, I did not change the file.
-* migrations/2_deploy_contract.js: Second task to do after compilation of both solidity files. Fully implemented by me and creates the first Patient contract and deploys into the Ethereum network.
-* static/css and static/img : CSS and image files for the EHR website.
-* templates/audit.html: Flask template showing client side audit actions webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/auditreg.html: Flask template showing client side audit signup webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/index.html: Flask template showing client side index webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/login.html: Flask template showing client side login webpage for both patients - audits. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/patient.html: Flask template showing client side patient actions webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/patientreg.html: Flask template showing client side patient signup webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* templates/result.html: Flask template showing client side result web page after sign in. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
-* test/: Test files for deployed solidity contract. Empty in this project
-* truffle-config.js:  Truffle configuration file is a Javascript file and can execute any code necessary to create configuration. In our case we connect Ganache GUI to truffle using this file.
+* [main.py](https://github.com/cumbul/EHRBlockchain/blob/main/main.py): All the user interface is implemented here using Flask and other than solidity files, all blockchain connections and other encryption/decryption/hashing is implemented here. This file will be deployed to the server.
+* [model.py](https://github.com/cumbul/EHRBlockchain/blob/main/model.py): GUI forms for login signup and all patient and user actions model classes defined here. This file will be deployed to the server.
+* [abi.json](https://github.com/cumbul/EHRBlockchain/blob/main/abi.json): JSON file that describes the deployed solidity contracts and its functions.
+* [bytecode.json](https://github.com/cumbul/EHRBlockchain/blob/main/bytecode.json): Solidity files get compiled to the EVM bytecode which gets deployed to the Ethereum blockchain.
+* [build/contracts/Migrations.json](https://github.com/cumbul/EHRBlockchain/blob/main/build/contracts/Migrations.json): After compilation Migration.sol turns into js file
+* [build/contracts/Patient.json](https://github.com/cumbul/EHRBlockchain/blob/main/build/contracts/Patient.json): After compiling using truffle Migration.sol turns into js
+* [contracts/Migrations.sol](https://github.com/cumbul/EHRBlockchain/blob/main/contracts/Migrations.sol): Solidity file which includes implementation of Migrations contract keeping track of which migrations were done on the current network. Implemented in truffle projects automatically, I did not change the file.
+* [contracts/Patient.sol](https://github.com/cumbul/EHRBlockchain/blob/main/contracts/Patient.sol): Solidity contract for creating a new patient and all of the health records of the patient as well as their authorized audit/doctor info.
+* [data/3f91fb273e0c… .csv](https://github.com/cumbul/EHRBlockchain/blob/main/data/3f91fb273e0cc5729c0e3c6379c3439c1369f987c29705146771707a.csv): Hashed name of “signin_data” where encrypted patient and audit signin data is stored. This file will be stored in the server or ideally a new encrypted db will be created for this purpose.
+* [data/enc_key.key](https://github.com/cumbul/EHRBlockchain/blob/main/data/enc_key.key): Fernet encryption key is stored here. This file should be hidden securely in server.
+* [data/f415ea3131a... . csv](http://f415ea3131a706b7d59e47c93b748932660f10d747cfa34f5868d469.csv): Hashed name of “uniqueid_data” where encrypted unique medical record id and patient id is stored. This file will be stored in the server or ideally a new encrypted db will be created for this purpose.
+* [migrations/1_initial_migration.js](https://github.com/cumbul/EHRBlockchain/blob/main/migrations/1_initial_migration.js): First task to do after compiling both Migrations.sol and Patient.sol. It migrates the and keeps track of migrations to the Ethereum blockchain. Implemented in the truffle project automatically, I did not change the file.
+* [migrations/2_deploy_contract.js](https://github.com/cumbul/EHRBlockchain/blob/main/migrations/2_deploy_contract.js): Second task to do after compilation of both solidity files. Fully implemented by me and creates the first Patient contract and deploys into the Ethereum network.
+* [static/css](https://github.com/cumbul/EHRBlockchain/tree/main/static/css) and [static/img](https://github.com/cumbul/EHRBlockchain/tree/main/static/img) : CSS and image files for the EHR website.
+* [templates/audit.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/audit.html): Flask template showing client side audit actions webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/auditreg.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/auditreg.html): Flask template showing client side audit signup webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/index.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/index.html): Flask template showing client side index webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/login.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/login.html): Flask template showing client side login webpage for both patients - audits. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/patient.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/patient.html): Flask template showing client side patient actions webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/patientreg.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/patientreg.html): Flask template showing client side patient signup webpage. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [templates/result.html](https://github.com/cumbul/EHRBlockchain/blob/main/templates/result.html): Flask template showing client side result web page after sign in. Built using HTML/CSS, Bootstrap and Jinja(embedded python code).
+* [test/](https://github.com/cumbul/EHRBlockchain/tree/main/test): Test files for deployed solidity contract. Empty in this project
+* [truffle-config.js](https://github.com/cumbul/EHRBlockchain/blob/main/truffle-config.js):  Truffle configuration file is a Javascript file and can execute any code necessary to create configuration. In our case we connect Ganache GUI to truffle using this file.
 
 ## Cryptographic Components Used
 * Fernet Encryption/Decryption:
