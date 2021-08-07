@@ -1,4 +1,7 @@
 # EHRBlockchain
+
+![GitHub index](/images/index.png)
+
 A project managing Electronic Health Records(EHR) of patients and giving permissions to audity using Solidity(Etherium Blockchain) with Truffle and Ganache GUI. Front-end is implemented with Flask and Web3.py is to connect Ethereum Blockchain.
 
 It uses:
